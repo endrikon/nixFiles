@@ -20,7 +20,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.endrit = import ./home-manager/default.nix;
+            home-manager.users.endrit = import ./home.nix;
           } 
         ];
       };

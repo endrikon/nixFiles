@@ -187,6 +187,10 @@
     # latex
     texlive.combined.scheme-full
 
+    # home-manager
+    home-manager
+
+    htop
     wget
     git
   ];

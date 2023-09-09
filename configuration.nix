@@ -59,21 +59,21 @@
   services.avahi.openFirewall = true;
 
   # xmonad
-  services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.windowManager = {
-    xmonad.enable = true;
-    xmonad.enableContribAndExtras = true;
-    xmonad.extraPackages = hpkgs: [
-      hpkgs.xmonad
-      hpkgs.xmonad-contrib
-      hpkgs.xmonad-extras
-      hpkgs.xmobar
-    ];
-  };
+  #services.xserver.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.windowManager = {
+  #  xmonad.enable = true;
+  #  xmonad.enableContribAndExtras = true;
+  #  xmonad.extraPackages = hpkgs: [
+  #    hpkgs.xmonad
+  #    hpkgs.xmonad-contrib
+  #    hpkgs.xmonad-extras
+  #    hpkgs.xmobar
+  #  ];
+  #};
 
-  services.picom.enable = true;
-  services.xserver.windowManager.xmonad.config = builtins.readFile /home/endrit/.xmonad/xmonad.hs;
+  #services.picom.enable = true;
+  #services.xserver.windowManager.xmonad.config = builtins.readFile /home/endrit/.xmonad/xmonad.hs;
 
   # Audio
   #sound.enable = true;
@@ -163,7 +163,7 @@
     tlp
 
     # xmonad
-    haskellPackages.xmobar
+    #haskellPackages.xmobar
 
     # fonts and themes
     lxappearance # theme setter for gtk applications

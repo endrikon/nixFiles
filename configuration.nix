@@ -169,22 +169,15 @@
     lxappearance # theme setter for gtk applications
     #libsForQt5.qt5ct # theme setter for qt applications
 
-    # Haskell
-    #(haskellPackages.ghcWithPackages (hpkgs: [
-    #  hpkgs.xmobar
-    #  hpkgs.xmonad
-    #  hpkgs.xmonad-contrib
-    #]))
-    #ghc
-
     # Python
     (python3.withPackages(ps: with ps;
      [ pandas numpy matplotlib requests ipython ]))
 
-    # Go
-    go
-
-    # latex
+    # latex and texts
+    libreoffice-qt
+    hunspell
+    hunspellDicts.de_CH
+    hunspellDicts.en-gb-ize
     texlive.combined.scheme-full
 
     # home-manager

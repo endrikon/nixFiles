@@ -19,6 +19,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # direnv
+  programs = {
+    direnv = {
+      enable = true;
+      enableZshIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+  };
+
   # zsh
   programs.zsh = {
     enable = true;
@@ -27,7 +36,9 @@
       plugins = [
         { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
         { name = "jeffreytse/zsh-vi-mode"; }
-        { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
+        { name = "themes/gallois"; tags = [ as:theme from:oh-my-zsh ]; }
+        { name = "zsh-users/zsh-syntax-highlighting"; tags = [ defer:2 ]; }
+        # { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
       ];
     };
   };

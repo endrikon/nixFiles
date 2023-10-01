@@ -19,6 +19,11 @@
     };
   };
 
+  fonts.fonts = with pkgs; [
+    font-awesome
+    meslo-lgs-nf
+  ];
+
   environment = {
     systemPackages = with pkgs;
       [

@@ -89,7 +89,6 @@
     # terminals and terminal commands
     alacritty #terminal emulator
     pciutils
-    zsh
     ranger
     w3m
 
@@ -107,11 +106,7 @@
 
     # Python
     (python3.withPackages(ps: with ps;
-     [ pandas numpy matplotlib requests ipython ]))
-
-
-    # home-manager
-    home-manager
+     [ pandas numpy matplotlib ipython ]))
 
     htop
     wget

@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, defaultUser ? "endrit", ... }:
 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "endrit";
-  home.homeDirectory = "/home/endrit";
+  home.username = "${defaultUser}";
+  home.homeDirectory = "/home/${defaultUser}";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -38,7 +38,6 @@
         { name = "jeffreytse/zsh-vi-mode"; }
         { name = "themes/gallois"; tags = [ as:theme from:oh-my-zsh ]; }
         { name = "zsh-users/zsh-syntax-highlighting"; tags = [ defer:2 ]; }
-        # { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
       ];
     };
   };

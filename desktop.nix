@@ -37,6 +37,9 @@
         brightnessctl
         redshift
 
+        # sound
+        sof-firmware
+
         # files
         evince # pdf viewer
         nomacs # image viewer

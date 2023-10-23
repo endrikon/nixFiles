@@ -98,11 +98,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1697293603,
-        "narHash": "sha256-YB+ecuKAawLf70qKZs+b9jdqeGV61828qcnsDauzV74=",
+        "lastModified": 1698052463,
+        "narHash": "sha256-1Bixk3t7rTSK3rtIQAf5nOkRjq4YFKjoIDPmBLRivN8=",
         "owner": "Tigatoo",
         "repo": ".xmonad",
-        "rev": "20de1f69a262e18c0b50f03abc9a0c8dbdb06965",
+        "rev": "b21fcfa2962656ac087055081bb33b5ab2b37ceb",
         "type": "github"
       },
       "original": {

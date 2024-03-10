@@ -51,6 +51,11 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+
+    emacs = {
+      enable = true;
+      package = pkgs.emacs;
+    };
   };
 
   # Audio

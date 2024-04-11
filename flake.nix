@@ -3,16 +3,16 @@
   description = "flake for nixos setup";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     xmonad-session.url = "github:Tigatoo/.xmonad";
     gitu.url = "github:altsem/gitu";
   };
 
-  outputs = { self, nixpkgs, home-manager, xmonad-session, gitu,... } @ attrs:
+  outputs = { self, nixpkgs, home-manager, xmonad-session, gitu, ... } @ attrs:
     let
       mkSystem = {
         extraModules ? [],
@@ -30,16 +30,18 @@
 
           modules =
             [
-              ./base.nix { gitu = gitu; }
+              ./base.nix
               ./desktop.nix
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.${defaultUser} = import ./home.nix {
+                home-manager.users.${defaultUser} = {pkgs, ...}: import ./home.nix {
                   inherit
+                    pkgs
+                    system
+                    gitu
                     defaultUser;
-                  pkgs = nixpkgs;
                 };
               }
               xmonad-session.nixosModules.default

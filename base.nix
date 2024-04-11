@@ -1,4 +1,4 @@
-{ config, lib, pkgs, defaultUser ? "endrit", gitu, ... }:
+{ config, lib, pkgs, defaultUser ? "endrit", ... }:
 
 {
 
@@ -29,18 +29,24 @@
   # Configure keymap in X11
   services = {
     xserver = {
-      layout = "ch";
-      xkb.variant = "de_nodeadkeys";
-      libinput.enable = true;
-      libinput.touchpad.naturalScrolling = true;
-      libinput.touchpad.middleEmulation = true;
-      libinput.touchpad.tapping = true;
+      xkb = {
+        layout = "ch";
+        variant = "de_nodeadkeys";
+      };
+      libinput = {
+        enable = true;
+        touchpad = {
+          naturalScrolling = true;
+          middleEmulation = true;
+          tapping = true;
+        };
+      };
     };
 
     printing.enable = true;
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
     };
 
@@ -116,6 +122,5 @@
     htop
     wget
     git
-    gitu.packages.${pkgs.system}.default
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, defaultUser ? "endrit", ... }:
+{ pkgs, defaultUser ? "endrit", system, gitu, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -16,6 +16,8 @@
   # changes in each release.
   home.stateVersion = "22.11";
 
+  home.packages = [ gitu.packages.${system}.default ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -31,11 +33,45 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "base16";
+      theme = "sonokai";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
       };
+      editor.cursor-shape = {
+        normal = "block";
+        insert = "bar";
+        select = "underline";
+      };
+    };
+
+    extraPackages = with pkgs; [ rust-analyzer haskell-language-server ];
+
+    languages = {
+      language-server = {
+        rust-analyzer = {
+          command = "rust-analyzer";
+          config.inlayHints = {
+            bindingModeHints.enable = false;
+            closingBraceHints.minLines = 10;
+            discirminantHints.enable = "fieldless";
+            lifetimeEisionHInts.enable = "skip_trivial";
+            typehints.hideClosureInitialization = false;
+          };
+        };
+        haskell-language-server-wrapper.command = "haskell-language-server";
+      };
+
+      language = [
+        {
+          name = "rust";
+          auto-format = false;
+        }
+        {
+          name = "haskell";
+          auto-format = false;
+        }
+      ];
     };
   };
 

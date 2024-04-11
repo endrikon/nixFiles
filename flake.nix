@@ -9,9 +9,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     xmonad-session.url = "github:Tigatoo/.xmonad";
+    gitu.url = "github:altsem/gitu";
   };
 
-  outputs = { self, nixpkgs, home-manager, xmonad-session, ... } @ attrs:
+  outputs = { self, nixpkgs, home-manager, xmonad-session, gitu,... } @ attrs:
     let
       mkSystem = {
         extraModules ? [],
@@ -29,7 +30,7 @@
 
           modules =
             [
-              ./base.nix
+              ./base.nix { gitu = gitu; }
               ./desktop.nix
               home-manager.nixosModules.home-manager
               {

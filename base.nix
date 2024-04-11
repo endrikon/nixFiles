@@ -1,4 +1,4 @@
-{ config, lib, pkgs, defaultUser ? "endrit", ... }:
+{ config, lib, pkgs, defaultUser ? "endrit", gitu, ... }:
 
 {
 
@@ -30,7 +30,7 @@
   services = {
     xserver = {
       layout = "ch";
-      xkbVariant = "de_nodeadkeys";
+      xkb.variant = "de_nodeadkeys";
       libinput.enable = true;
       libinput.touchpad.naturalScrolling = true;
       libinput.touchpad.middleEmulation = true;
@@ -116,5 +116,6 @@
     htop
     wget
     git
+    gitu.packages.${pkgs.system}.default
   ];
 }

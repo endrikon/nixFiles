@@ -45,7 +45,7 @@
       };
     };
 
-    extraPackages = with pkgs; [ rust-analyzer haskell-language-server ];
+    extraPackages = with pkgs; [ rust-analyzer haskell-language-server jdt-language-server ];
 
     languages = {
       language-server = {
@@ -60,6 +60,7 @@
           };
         };
         haskell-language-server-wrapper.command = "haskell-language-server";
+        jdtls.command = "jdtls";
       };
 
       language = [
@@ -69,6 +70,10 @@
         }
         {
           name = "haskell";
+          auto-format = false;
+        }
+        {
+          name = "java";
           auto-format = false;
         }
       ];

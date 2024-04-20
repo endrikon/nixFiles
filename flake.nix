@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xmonad-session.url = "github:Tigatoo/.xmonad";
+    xmonad-session.url = "github:endrikon/.xmonad";
     gitu.url = "github:altsem/gitu";
   };
 

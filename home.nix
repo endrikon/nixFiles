@@ -45,7 +45,7 @@
       };
     };
 
-    extraPackages = with pkgs; [ rust-analyzer haskell-language-server jdt-language-server ];
+    extraPackages = with pkgs; [ rust-analyzer haskell-language-server jdt-language-server nil ];
 
     languages = {
       language-server = {
@@ -61,6 +61,7 @@
         };
         haskell-language-server-wrapper.command = "haskell-language-server";
         jdtls.command = "jdtls";
+        nil.command = "nil";
       };
 
       language = [
@@ -76,6 +77,10 @@
           name = "java";
           auto-format = false;
         }
+        {
+          name = "nix";
+          auto-format = false;
+        }
       ];
     };
   };
@@ -83,6 +88,9 @@
   # zsh
   programs.zsh = {
     enable = true;
+    sessionVariables = {
+      EDITOR = "hx";
+    };
     zplug = {
       enable = true;
       plugins = [
@@ -92,5 +100,21 @@
         { name = "zsh-users/zsh-syntax-highlighting"; tags = [ defer:2 ]; }
       ];
     };
+  };
+
+  # tmux
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    disableConfirmationPrompt = true;
+    keyMode = "vi";
+    terminal = "screen-256color";
+    tmuxinator.enable = true;
+    newSession = true; # Automatically spawn a session if trying to attach and none are running.
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      vim-tmux-navigator
+      yank
+    ];
   };
 }

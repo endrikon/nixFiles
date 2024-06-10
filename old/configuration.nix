@@ -183,6 +183,12 @@
     # home-manager
     home-manager
 
+    # #OpenGL
+    # freeglut
+    # libGL
+    # libGLU
+    # libglvnd
+
     htop
     wget
     git

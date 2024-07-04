@@ -45,7 +45,13 @@
       };
     };
 
-    extraPackages = with pkgs; [ rust-analyzer haskell-language-server jdt-language-server nil ];
+    extraPackages = with pkgs; [ 
+      rust-analyzer 
+      haskell-language-server 
+      jdt-language-server 
+      nil 
+      dhall-lsp-server
+      ];
 
     languages = {
       language-server = {
@@ -62,6 +68,7 @@
         haskell-language-server-wrapper.command = "haskell-language-server";
         jdtls.command = "jdtls";
         nil.command = "nil";
+        dhall-lsp-server = "dhall-lsp-server";
       };
 
       language = [
@@ -79,6 +86,10 @@
         }
         {
           name = "nix";
+          auto-format = false;
+        }
+        {
+          name = "dhall";
           auto-format = false;
         }
       ];

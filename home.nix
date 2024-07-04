@@ -68,7 +68,7 @@
         haskell-language-server-wrapper.command = "haskell-language-server";
         jdtls.command = "jdtls";
         nil.command = "nil";
-        dhall-lsp-server = "dhall-lsp-server";
+        dhall-lsp-server.command = "dhall-lsp-server";
       };
 
       language = [

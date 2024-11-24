@@ -10,8 +10,8 @@
   };
 
   nix.settings = {
-    extra-substituters = https://devenv.cachix.org;
-    extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=;
+    extra-substituters = "https://devenv.cachix.org";
+    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
   };
 
   # Enable networking
@@ -38,13 +38,13 @@
         layout = "ch";
         variant = "de_nodeadkeys";
       };
-      libinput = {
-        enable = true;
-        touchpad = {
-          naturalScrolling = true;
-          middleEmulation = true;
-          tapping = true;
-        };
+    };
+    libinput = {
+      enable = true;
+      touchpad = {
+        naturalScrolling = true;
+        middleEmulation = true;
+        tapping = true;
       };
     };
 
@@ -130,5 +130,7 @@
     htop
     wget
     git
+    jujutsu
+    ripgrep
   ];
 }

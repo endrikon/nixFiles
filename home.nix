@@ -37,11 +37,15 @@
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
-      };
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
+        end-of-line-diagnostics = "hint";
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
+        inline-diagnostics = {
+          cursor-line = "error";
+        };
       };
     };
 
@@ -113,8 +117,8 @@
       plugins = [
         { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
         { name = "jeffreytse/zsh-vi-mode"; }
-        { name = "themes/gallois"; tags = [ as:theme from:oh-my-zsh ]; }
-        { name = "zsh-users/zsh-syntax-highlighting"; tags = [ defer:2 ]; }
+        { name = "themes/gallois"; tags = [ "as:theme" "from:oh-my-zsh" ]; }
+        { name = "zsh-users/zsh-syntax-highlighting"; tags = [ "defer:2" ]; }
       ];
     };
   };

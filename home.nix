@@ -51,6 +51,7 @@
       jdt-language-server 
       nil 
       dhall-lsp-server
+      typescript-language-server
       ];
 
     languages = {
@@ -69,6 +70,7 @@
         jdtls.command = "jdtls";
         nil.command = "nil";
         dhall-lsp-server.command = "dhall-lsp-server";
+        javascript.command = "typescript-language-server";
       };
 
       language = [
@@ -90,6 +92,10 @@
         }
         {
           name = "dhall";
+          auto-format = false;
+        }
+        {
+          name = "javascript";
           auto-format = false;
         }
       ];

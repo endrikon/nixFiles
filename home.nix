@@ -1,6 +1,10 @@
-{ pkgs, defaultUser ? "endrit", system, gitu, ... }:
-
 {
+  pkgs,
+  defaultUser ? "endrit",
+  system,
+  gitu,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "${defaultUser}";
@@ -16,7 +20,7 @@
   # changes in each release.
   home.stateVersion = "22.11";
 
-  home.packages = [ gitu.packages.${system}.default ];
+  home.packages = [gitu.packages.${system}.default];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -49,14 +53,21 @@
       };
     };
 
-    extraPackages = with pkgs; [ 
-      rust-analyzer 
-      haskell-language-server 
-      jdt-language-server 
-      nil 
+    extraPackages = with pkgs; [
+      rust-analyzer
+      rustfmt
+
+      haskell-language-server
+      fourmolu
+
+      jdt-language-server
+
+      nil
+      alejandra
+
       dhall-lsp-server
       typescript-language-server
-      ];
+    ];
 
     languages = {
       language-server = {
@@ -80,27 +91,30 @@
       language = [
         {
           name = "rust";
-          auto-format = false;
+          formatter = {command = "rustfmt";};
+          auto-format = true;
         }
         {
           name = "haskell";
-          auto-format = false;
+          auto-format = true;
+          formatter = {command = "fourmolu";};
         }
         {
           name = "java";
-          auto-format = false;
+          auto-format = true;
         }
         {
           name = "nix";
-          auto-format = false;
+          auto-format = true;
+          formatter = {command = "alejandra";};
         }
         {
           name = "dhall";
-          auto-format = false;
+          auto-format = true;
         }
         {
           name = "javascript";
-          auto-format = false;
+          auto-format = true;
         }
       ];
     };
@@ -115,10 +129,16 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
-        { name = "jeffreytse/zsh-vi-mode"; }
-        { name = "themes/gallois"; tags = [ "as:theme" "from:oh-my-zsh" ]; }
-        { name = "zsh-users/zsh-syntax-highlighting"; tags = [ "defer:2" ]; }
+        {name = "zsh-users/zsh-autosuggestions";} # Simple plugin installation
+        {name = "jeffreytse/zsh-vi-mode";}
+        {
+          name = "themes/gallois";
+          tags = ["as:theme" "from:oh-my-zsh"];
+        }
+        {
+          name = "zsh-users/zsh-syntax-highlighting";
+          tags = ["defer:2"];
+        }
       ];
     };
   };

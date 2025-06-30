@@ -97,7 +97,10 @@
         {
           name = "haskell";
           auto-format = true;
-          formatter = {command = "fourmolu";};
+          formatter = {
+            command = "zsh";
+            args = ["-c" "fourmolu --stdin-input-file $(pwd)"];
+          };
         }
         {
           name = "java";

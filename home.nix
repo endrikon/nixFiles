@@ -67,6 +67,9 @@
 
       dhall-lsp-server
       typescript-language-server
+
+      superhtml
+      prettierd
     ];
 
     languages = {
@@ -86,6 +89,7 @@
         nil.command = "nil";
         dhall-lsp-server.command = "dhall-lsp-server";
         javascript.command = "typescript-language-server";
+        html.command = "superhtml-lsp";
       };
 
       language = [
@@ -118,6 +122,22 @@
         {
           name = "javascript";
           auto-format = true;
+        }
+        {
+          name = "html";
+          auto-format = true;
+          formatter = {
+            command = "prettierd";
+            args = [".html"];
+          };
+        }
+        {
+          name = "css";
+          auto-format = true;
+          formatter = {
+            command = "prettierd";
+            args = [".css"];
+          };
         }
       ];
     };

@@ -1,7 +1,10 @@
-{ config, lib, pkgs, defaultUser ? "endrit", ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  defaultUser ? "endrit",
+  ...
+}: {
   boot = {
     loader = {
       systemd-boot.enable = lib.mkDefault true;
@@ -72,7 +75,6 @@
   # Audio
   security.rtkit.enable = true;
 
-
   # bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -89,7 +91,7 @@
     users."${defaultUser}" = {
       isNormalUser = true;
       description = "User";
-      extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "input" "tty"];
+      extraGroups = ["networkmanager" "wheel" "audio" "sound" "video" "input" "tty"];
       packages = with pkgs; [];
     };
   };
@@ -124,13 +126,13 @@
     tlp
 
     # Python
-    (python3.withPackages(ps: with ps;
-     [ pandas numpy matplotlib ipython ]))
+    (python3.withPackages (ps: with ps; [pandas numpy matplotlib ipython]))
 
     htop
     wget
     git
     jujutsu
+    jjui
     ripgrep
   ];
 }

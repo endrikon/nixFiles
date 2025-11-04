@@ -89,6 +89,7 @@
         nil.command = "nil";
         dhall-lsp-server.command = "dhall-lsp-server";
         javascript.command = "typescript-language-server";
+        typescript.command = "typescript-language-server";
         html.command = "superhtml-lsp";
       };
 
@@ -122,6 +123,22 @@
         {
           name = "javascript";
           auto-format = true;
+        }
+        {
+          name = "typescript";
+          auto-format = true;
+          formatter = {
+            command = "prettierd";
+            args = [".ts"];
+          };
+        }
+        {
+          name = "tsx";
+          auto-format = true;
+          formatter = {
+            command = "prettierd";
+            args = [".tsx"];
+          };
         }
         {
           name = "html";

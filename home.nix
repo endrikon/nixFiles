@@ -70,6 +70,9 @@
 
       superhtml
       prettierd
+
+      ruff
+      pyright
     ];
 
     languages = {
@@ -91,12 +94,34 @@
         javascript.command = "typescript-language-server";
         typescript.command = "typescript-language-server";
         html.command = "superhtml-lsp";
+        ruff = {
+          command = "ruff";
+          args = ["server"];
+        };
+        pyright = {
+          command = "pyright-langserver";
+          args = ["--stdio"];
+        };
       };
 
       language = [
         {
+          name = "fsharp";
+          formatter = {command = "fsharp-ls";};
+          auto-format = true;
+        }
+        {
           name = "rust";
           formatter = {command = "rustfmt";};
+          auto-format = true;
+        }
+        {
+          name = "python";
+          language-servers = ["ruff" "pyright"];
+          formatter = {
+            command = "ruff";
+            args = ["format" "-"];
+          };
           auto-format = true;
         }
         {

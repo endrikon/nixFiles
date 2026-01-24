@@ -1,4 +1,3 @@
-# /etc/nixos/flake.nix
 {
   description = "flake for nixos setup";
 

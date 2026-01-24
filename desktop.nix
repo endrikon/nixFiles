@@ -1,5 +1,9 @@
 {
- systemd.services.slock-sleep = {
+  lib,
+  pkgs,
+  ...
+}: {
+  systemd.services.slock-sleep = {
     enable = true;
     description = "Lock X session using slock on sleep";
     before = ["sleep.target"];
@@ -23,36 +27,34 @@
   ];
 
   environment = {
-    systemPackages = with pkgs;
-      [
-        # mozilla
-        firefox #browser
-        thunderbird
+    systemPackages = with pkgs; [
+      # mozilla
+      firefox #browser
+      thunderbird
 
-        nitrogen #wallpaper
-        dmenu
-        xorg.xbacklight
-        brightnessctl
-        redshift
+      nitrogen #wallpaper
+      dmenu
+      xorg.xbacklight
+      brightnessctl
+      redshift
 
-        # sound
-        sof-firmware
+      # sound
+      sof-firmware
 
-        # files
-        evince # pdf viewer
-        nomacs # image viewer
-        xfce.thunar
+      # files
+      evince # pdf viewer
+      nomacs # image viewer
+      xfce.thunar
 
-        # fonts and themes
-        lxappearance # theme setter for gtk applications
-        #libsForQt5.qt5ct # theme setter for qt applications
+      # fonts and themes
+      lxappearance # theme setter for gtk applications
+      #libsForQt5.qt5ct # theme setter for qt applications
 
-        # latex and texts
-        libreoffice-qt
-        hunspell
-        hunspellDicts.de_CH
-        hunspellDicts.en-gb-ize
-        texlive.combined.scheme-full
-      ];
+      # latex and texts
+      libreoffice-qt
+      hunspell
+      hunspellDicts.de_CH
+      hunspellDicts.en-gb-ize
+    ];
   };
 }

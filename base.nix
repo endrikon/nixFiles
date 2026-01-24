@@ -125,9 +125,6 @@
     # power management
     tlp
 
-    # Python
-    (python3.withPackages (ps: with ps; [pandas numpy matplotlib ipython]))
-
     htop
     wget
     git

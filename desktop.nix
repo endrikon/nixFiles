@@ -1,5 +1,3 @@
-{ config, lib, pkgs, defaultUser ? "endrit", ... }:
-
 {
  systemd.services.slock-sleep = {
     enable = true;

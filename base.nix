@@ -90,7 +90,7 @@
     defaultUserShell = pkgs.zsh;
     users."${defaultUser}" = {
       isNormalUser = true;
-      description = "User";
+      description = "Endrit";
       extraGroups = ["networkmanager" "wheel" "audio" "sound" "video" "input" "tty"];
       packages = with pkgs; [];
     };

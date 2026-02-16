@@ -62,6 +62,11 @@
           ./configurations/configuration.nix
         ];
       };
+      lenovo = mkSystem {
+        extraModules = [
+          ./configurations/lenovo-configuration.nix
+        ];
+      };
     };
 
     helpers = {

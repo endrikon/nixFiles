@@ -65,11 +65,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-
-    emacs = {
-      enable = true;
-      package = pkgs.emacs;
-    };
   };
 
   # Audio
@@ -121,13 +116,13 @@
   environment.systemPackages = with pkgs; [
     # editors
     vim
-    emacs
 
     # terminals and terminal commands
     alacritty #terminal emulator
     pciutils
-    ranger
     w3m
+    yazi
+    ueberzugpp
 
     # nix related stuff
     devenv

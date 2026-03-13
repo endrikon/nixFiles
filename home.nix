@@ -20,7 +20,10 @@
   # changes in each release.
   home.stateVersion = "22.11";
 
-  home.packages = [gitu.packages.${system}.default];
+  home.packages = [
+    gitu.packages.${system}.default
+    pkgs.grc
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -221,42 +224,41 @@
     };
   };
 
-  # zsh
-  programs.zsh = {
-    enable = true;
-    sessionVariables = {
-      EDITOR = "hx";
-    };
-    zplug = {
+  programs = {
+    fish = {
       enable = true;
+      loginShellInit = "";
       plugins = [
-        {name = "zsh-users/zsh-autosuggestions";} # Simple plugin installation
-        {name = "jeffreytse/zsh-vi-mode";}
+        # Enable a plugin (here grc for colorized command output) from nixpkgs
         {
-          name = "themes/gallois";
-          tags = ["as:theme" "from:oh-my-zsh"];
+          name = "grc";
+          src = pkgs.fishPlugins.grc.src;
         }
         {
-          name = "zsh-users/zsh-syntax-highlighting";
-          tags = ["defer:2"];
+          name = "fzf-fish";
+          src = pkgs.fishPlugins.fzf-fish.src;
+        }
+        {
+          name = "bobthefish";
+          src = pkgs.fishPlugins.bobthefish.src;
         }
       ];
     };
-  };
 
-  # tmux
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    disableConfirmationPrompt = true;
-    keyMode = "vi";
-    terminal = "screen-256color";
-    tmuxinator.enable = true;
-    newSession = true; # Automatically spawn a session if trying to attach and none are running.
-    plugins = with pkgs.tmuxPlugins; [
-      sensible
-      vim-tmux-navigator
-      yank
-    ];
+    # tmux
+    tmux = {
+      enable = true;
+      clock24 = true;
+      disableConfirmationPrompt = true;
+      keyMode = "vi";
+      terminal = "screen-256color";
+      tmuxinator.enable = true;
+      newSession = true; # Automatically spawn a session if trying to attach and none are running.
+      plugins = with pkgs.tmuxPlugins; [
+        sensible
+        vim-tmux-navigator
+        yank
+      ];
+    };
   };
 }

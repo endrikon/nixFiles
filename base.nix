@@ -80,7 +80,26 @@
   services.blueman.enable = true;
 
   # shell
-  programs.zsh.enable = true;
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      set -g theme_color_scheme dark
+      set -g theme_display_git yes
+      set -g theme_display_virtualenv yes
+      set -gx EDITOR hx
+      set -gx VISUAL hx
+      fish_vi_key_bindings
+    '';
+  };
+  programs.zsh = {
+    enable = true;
+    shellInit = ''
+      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+      then
+          exec fish -l
+      fi
+    '';
+  };
 
   # Configure console keymap
   console.keyMap = "sg";
@@ -125,7 +144,8 @@
     # power management
     tlp
 
-    htop
+    btop
+    fzf
     wget
     git
     jujutsu

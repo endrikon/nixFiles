@@ -34,7 +34,7 @@
 
       nitrogen #wallpaper
       dmenu
-      xorg.xbacklight
+      xbacklight
       brightnessctl
       redshift
 
@@ -44,7 +44,7 @@
       # files
       evince # pdf viewer
       nomacs # image viewer
-      xfce.thunar
+      thunar
 
       # fonts and themes
       lxappearance # theme setter for gtk applications

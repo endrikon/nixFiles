@@ -223,11 +223,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1771151104,
-        "narHash": "sha256-c3cTdH8qO00MOvQC+P6SMQipMbBPbI5GVUZ7X96wyKI=",
+        "lastModified": 1773502424,
+        "narHash": "sha256-8zZ3tLrvEuux82ja9QKtP99nBjYQl9ZzY+peClR4mEQ=",
         "owner": "endrikon",
         "repo": ".xmonad",
-        "rev": "cf76053b19bcede23ccf4f2a6316b5811356fc22",
+        "rev": "fa5fd4e27ccc1740693d97521a1c01b5345e4f87",
         "type": "github"
       },
       "original": {

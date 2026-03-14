@@ -21,9 +21,11 @@
   } @ attrs: let
     mkSystem = {
       extraModules ? [],
+      extraHomeManagerConfigs ? {},
       defaultUser ? "endrit",
       system ? "x86_64-linux",
       nixosSystem ? nixpkgs.lib.nixosSystem,
+      ...
     }:
       nixosSystem {
         inherit system;
@@ -41,15 +43,15 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${defaultUser} = {pkgs, ...}:
-                import ./home.nix {
+              home-manager.users.${defaultUser} = {pkgs, ...}: ((import ./home.nix {
                   inherit
                     pkgs
                     system
                     gitu
                     defaultUser
                     ;
-                };
+                })
+                // extraHomeManagerConfigs);
             }
             xmonad-session.nixosModules.default
           ]
@@ -66,6 +68,7 @@
         extraModules = [
           ./configurations/lenovo-configuration.nix
         ];
+        extraHomeManagerConfigs = import ./home-manager/lenovo-configs.nix;
       };
     };
 

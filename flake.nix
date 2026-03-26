@@ -43,7 +43,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${defaultUser} = {pkgs, ...}: ((import ./home.nix {
+              home-manager.users.${defaultUser} = {pkgs, ...}: ((import ./home-manager {
                   inherit
                     pkgs
                     system

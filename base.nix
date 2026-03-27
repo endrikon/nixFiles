@@ -89,9 +89,8 @@
   programs.zsh = {
     enable = true;
     shellInit = ''
-      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
-      then
-          exec fish -l
+      if [[ -z "$ZSH_PLEASE" ]]; then
+      exec fish -l
       fi
     '';
   };

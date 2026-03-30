@@ -40,19 +40,15 @@
             ./base.nix
             ./desktop.nix
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${defaultUser} = {pkgs, ...}: ((import ./home-manager {
-                  inherit
-                    pkgs
-                    system
-                    gitu
-                    defaultUser
-                    ;
-                })
-                // extraHomeManagerConfigs);
-            }
+            ({pkgs, ...}: (import ./home-manager {
+              inherit
+                pkgs
+                system
+                gitu
+                defaultUser
+                extraHomeManagerConfigs
+                ;
+            }))
             xmonad-session.nixosModules.default
           ]
           ++ extraModules;

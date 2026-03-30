@@ -26,4 +26,5 @@ in
     (import ./python.nix {inherit pkgs;})
     (import ./rust.nix {inherit pkgs;})
     (import ./typescript.nix {inherit pkgs;})
+    (import ./go.nix {inherit pkgs;})
   ]

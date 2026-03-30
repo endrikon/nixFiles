@@ -74,6 +74,7 @@
 
     helpers = {
       inherit mkSystem;
+      utils = import ./utils;
     };
   };
 }

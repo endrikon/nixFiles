@@ -35,7 +35,7 @@ in {
           pkgs.grc
         ];
 
-        programs = import ./programs {inherit pkgs;};
+        programs = import ./programs {inherit pkgs defaultUser;};
       }
       extraHomeManagerConfigs
     ];

@@ -3,14 +3,7 @@
   pkgs,
   ...
 }: {
-  systemd.services.slock-sleep = {
-    enable = true;
-    description = "Lock X session using slock on sleep";
-    before = ["sleep.target"];
-    wantedBy = ["sleep.target"];
-    serviceConfig.PassEnvironment = "DISPLAY";
-    script = "${pkgs.slock}/bin/slock";
-  };
+  programs.slock.enable = true;
 
   hardware = {
     sane = {

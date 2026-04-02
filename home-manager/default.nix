@@ -36,6 +36,7 @@ in {
         ];
 
         programs = import ./programs {inherit pkgs defaultUser;};
+        services = import ./services {inherit pkgs;};
       }
       extraHomeManagerConfigs
     ];

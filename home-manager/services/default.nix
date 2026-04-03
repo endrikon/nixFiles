@@ -1,7 +1,13 @@
 {pkgs}: {
-  screen-locker = {
+  xidlehook = {
     enable = true;
-    lockCmd = "/run/wrappers/bin/slock";
-    inactiveInterval = 10;
+    not-when-audio = true;
+    not-when-fullscreen = true;
+    timers = [
+      {
+        delay = 600; # 10 min
+        command = "/run/wrappers/bin/slock";
+      }
+    ];
   };
 }

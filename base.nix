@@ -125,6 +125,7 @@
 
     # nix related stuff
     devenv
+    nix-output-monitor
 
     # audio
     alsa-utils

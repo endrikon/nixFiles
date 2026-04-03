@@ -9,4 +9,5 @@
   fish = import ./fish.nix {inherit pkgs;};
   tmux = import ./tmux.nix {inherit pkgs;};
   firefox = import ./firefox.nix {inherit defaultUser;};
+  zoxide = import ./zoxide.nix;
 }

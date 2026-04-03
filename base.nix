@@ -145,5 +145,6 @@
     jujutsu
     jjui
     ripgrep
+    zoxide
   ];
 }

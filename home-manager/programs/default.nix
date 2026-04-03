@@ -1,6 +1,7 @@
 {
   pkgs,
   defaultUser,
+  flake,
   ...
 }: {
   home-manager = import ./home-manager.nix;
@@ -10,4 +11,5 @@
   tmux = import ./tmux.nix {inherit pkgs;};
   firefox = import ./firefox.nix {inherit defaultUser;};
   zoxide = import ./zoxide.nix;
+  nh = import ./nh.nix {inherit flake;};
 }

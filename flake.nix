@@ -25,6 +25,7 @@
       defaultUser ? "endrit",
       system ? "x86_64-linux",
       nixosSystem ? nixpkgs.lib.nixosSystem,
+      flake ? "/home/endrit/nixFiles",
       ...
     }:
       nixosSystem {
@@ -47,6 +48,7 @@
                 gitu
                 defaultUser
                 extraHomeManagerConfigs
+                flake
                 ;
             }))
             xmonad-session.nixosModules.default

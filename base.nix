@@ -1,8 +1,11 @@
 {
+  defaultUser,
+  flake,
+  ...
+}: {
   config,
   lib,
   pkgs,
-  defaultUser ? "endrit",
   ...
 }: {
   boot = {
@@ -75,24 +78,32 @@
   services.blueman.enable = true;
 
   # shell
-  programs.fish = {
-    enable = true;
-    shellInit = ''
-      set -g theme_color_scheme dark
-      set -g theme_display_git yes
-      set -g theme_display_virtualenv yes
-      set -gx EDITOR hx
-      set -gx VISUAL hx
-      fish_vi_key_bindings
-    '';
-  };
-  programs.zsh = {
-    enable = true;
-    shellInit = ''
-      if [[ -z "$ZSH_PLEASE" ]]; then
-      exec fish -l
-      fi
-    '';
+  programs = {
+    fish = {
+      enable = true;
+      shellInit = ''
+        set -g theme_color_scheme dark
+        set -g theme_display_git yes
+        set -g theme_display_virtualenv yes
+        set -gx EDITOR hx
+        set -gx VISUAL hx
+        fish_vi_key_bindings
+      '';
+    };
+    zsh = {
+      enable = true;
+      shellInit = ''
+        if [[ -z "$ZSH_PLEASE" ]]; then
+        exec fish -l
+        fi
+      '';
+    };
+    nh = {
+      inherit flake;
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+    };
   };
 
   # Configure console keymap

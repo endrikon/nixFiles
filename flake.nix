@@ -38,7 +38,7 @@
 
         modules =
           [
-            ./base.nix
+            (import ./base.nix {inherit defaultUser flake;})
             ./desktop.nix
             home-manager.nixosModules.home-manager
             ({pkgs, ...}: (import ./home-manager {
@@ -48,7 +48,6 @@
                 gitu
                 defaultUser
                 extraHomeManagerConfigs
-                flake
                 ;
             }))
             xmonad-session.nixosModules.default

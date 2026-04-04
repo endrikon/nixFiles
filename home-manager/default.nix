@@ -4,7 +4,6 @@
   system,
   gitu,
   extraHomeManagerConfigs,
-  flake,
   ...
 }: let
   lib = pkgs.lib;
@@ -36,7 +35,7 @@ in {
           pkgs.grc
         ];
 
-        programs = import ./programs {inherit pkgs defaultUser flake;};
+        programs = import ./programs {inherit pkgs defaultUser;};
         services = import ./services {inherit pkgs;};
       }
       extraHomeManagerConfigs

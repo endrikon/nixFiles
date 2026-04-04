@@ -14,4 +14,5 @@ in
     (import ./rust.nix {inherit pkgs;})
     (import ./typescript.nix {inherit pkgs;})
     (import ./go.nix {inherit pkgs;})
+    (import ./terraform.nix {inherit pkgs;})
   ]

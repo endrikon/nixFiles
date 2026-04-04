@@ -4,6 +4,12 @@
   ...
 }: {
   programs.slock.enable = true;
+  services = {
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend";
+      LidSwitchIgnoreInhibited = "no";
+    };
+  };
 
   hardware = {
     sane = {

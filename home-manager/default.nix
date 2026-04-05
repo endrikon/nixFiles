@@ -1,6 +1,8 @@
 {
   pkgs,
   defaultUser ? "endrit",
+  name,
+  email,
   system,
   gitu,
   extraHomeManagerConfigs,
@@ -35,7 +37,7 @@ in {
           pkgs.grc
         ];
 
-        programs = import ./programs {inherit pkgs defaultUser;};
+        programs = import ./programs {inherit pkgs defaultUser name email;};
         services = import ./services {inherit pkgs;};
       }
       extraHomeManagerConfigs

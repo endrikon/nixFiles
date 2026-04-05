@@ -1,6 +1,8 @@
 {
   pkgs,
   defaultUser,
+  name,
+  email,
   ...
 }: {
   home-manager = import ./home-manager.nix;
@@ -10,4 +12,5 @@
   tmux = import ./tmux.nix {inherit pkgs;};
   firefox = import ./firefox.nix {inherit defaultUser;};
   zoxide = import ./zoxide.nix;
+  git = import ./git.nix {inherit name email;};
 }

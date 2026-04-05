@@ -23,6 +23,8 @@
       extraModules ? [],
       extraHomeManagerConfigs ? {},
       defaultUser ? "endrit",
+      name ? "Endrit Konjuhi",
+      email,
       system ? "x86_64-linux",
       nixosSystem ? nixpkgs.lib.nixosSystem,
       flake ? "/home/endrit/nixFiles",
@@ -47,6 +49,8 @@
                 system
                 gitu
                 defaultUser
+                name
+                email
                 extraHomeManagerConfigs
                 ;
             }))
@@ -57,11 +61,13 @@
   in {
     nixosConfigurations = {
       laptop = mkSystem {
+        email = "29706861+endrikon@users.noreply.github.com";
         extraModules = [
           ./configurations/configuration.nix
         ];
       };
       lenovo = mkSystem {
+        email = "29706861+endrikon@users.noreply.github.com";
         extraModules = [
           ./configurations/lenovo-configuration.nix
         ];

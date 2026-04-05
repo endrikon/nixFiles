@@ -13,4 +13,5 @@
   firefox = import ./firefox.nix {inherit defaultUser;};
   zoxide = import ./zoxide.nix;
   git = import ./git.nix {inherit name email;};
+  jujutsu = import ./jujutsu.nix {inherit name email;};
 }

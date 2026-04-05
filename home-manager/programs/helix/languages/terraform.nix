@@ -9,18 +9,7 @@
       {
         name = "hcl";
         scope = "source.hcl";
-        file-types = [ "hcl" ];
-        auto-format = false;
-        formatter = {
-          command = "terraform";
-          args = ["fmt" "-"];
-        };
-        language-servers = ["terraform-ls"];
-      }
-      {
-        name = "terraform";
-        scope = "source.terraform";
-        file-types = [ "tf" "tfvars" ];
+        file-types = [ "hcl" "tf" ];
         auto-format = false;
         formatter = {
           command = "terraform";

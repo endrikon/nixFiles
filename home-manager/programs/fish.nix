@@ -25,5 +25,9 @@
       name = "bobthefish";
       src = pkgs.fishPlugins.bobthefish.src;
     }
+    {
+      name = "bass";
+      src = pkgs.fishPlugins.bass.src;
+    }
   ];
 }

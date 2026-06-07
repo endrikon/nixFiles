@@ -69,6 +69,18 @@
     #  wget
   ];
 
+  services.power-profiles-daemon.enable = true;
+  # Suspend first then hibernate when closing the lid
+  services.logind.settings.Login.LidSwitch = "suspend-then-hibernate";
+  # Hibernate on power button pressed
+  services.logind.settings.Login.PowerKey = "hibernate";
+  services.logind.settings.Login.PowerKeyLongPress = "poweroff";
+  # Define time delay for hibernation
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "30m";
+    SuspendState = "mem";
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

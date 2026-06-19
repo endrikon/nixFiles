@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -70,8 +71,11 @@
   ];
 
   services.power-profiles-daemon.enable = true;
-  # Suspend first then hibernate when closing the lid
-  services.logind.settings.Login.LidSwitch = "suspend-then-hibernate";
+  # Suspend first then hibernate when closing the lid.
+  # NOTE: the key is HandleLidSwitch, not LidSwitch — logind silently ignores
+  # "LidSwitch", so the lid only ever did a plain (s2idle) suspend and never
+  # hibernated. mkForce overrides HandleLidSwitch = "suspend" from desktop.nix.
+  services.logind.settings.Login.HandleLidSwitch = lib.mkForce "suspend-then-hibernate";
   # Hibernate on power button pressed
   services.logind.settings.Login.PowerKey = "hibernate";
   services.logind.settings.Login.PowerKeyLongPress = "poweroff";

@@ -35,7 +35,9 @@
     "mem_sleep_default=deep"
     "resume_offset=228622336"
   ];
-  boot.resumeDevice = "/dev/mapper/root";
+  # Must match the unlocked LUKS device that holds /var/lib/swapfile (the
+  # device backing fileSystems."/" below).
+  boot.resumeDevice = "/dev/mapper/luks-3c27f4af-5131-4f6a-90c0-40c1fda781fd";
 
   fileSystems."/" = {
     device = "/dev/mapper/luks-3c27f4af-5131-4f6a-90c0-40c1fda781fd";

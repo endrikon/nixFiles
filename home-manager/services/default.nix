@@ -14,4 +14,5 @@
     enable = true;
     lockCmd = "/run/wrappers/bin/slock";
   };
+  dunst = import ./dunst.nix;
 }

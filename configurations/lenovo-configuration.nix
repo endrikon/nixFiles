@@ -78,9 +78,9 @@
   # "LidSwitch", so the lid only ever did a plain (s2idle) suspend and never
   # hibernated. mkForce overrides HandleLidSwitch = "suspend" from desktop.nix.
   services.logind.settings.Login.HandleLidSwitch = lib.mkForce "suspend-then-hibernate";
-  # Hibernate on power button pressed
-  services.logind.settings.Login.PowerKey = "hibernate";
-  services.logind.settings.Login.PowerKeyLongPress = "poweroff";
+  # Hibernate on power button pressed.
+  services.logind.settings.Login.HandlePowerKey = "hibernate";
+  services.logind.settings.Login.HandlePowerKeyLongPress = "poweroff";
   # Define time delay for hibernation
   systemd.sleep.settings.Sleep = {
     HibernateDelaySec = "30m";

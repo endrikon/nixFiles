@@ -73,9 +73,9 @@
   ];
 
   services.power-profiles-daemon.enable = true;
-  # Suspend first then hibernate when closing the lid.
+  # Suspend first, then hibernate when closing the lid.
   # NOTE: the key is HandleLidSwitch, not LidSwitch — logind silently ignores
-  # "LidSwitch", so the lid only ever did a plain (s2idle) suspend and never
+  # "LidSwitch", so the lid only ever did a plain suspend and never
   # hibernated. mkForce overrides HandleLidSwitch = "suspend" from desktop.nix.
   services.logind.settings.Login.HandleLidSwitch = lib.mkForce "suspend-then-hibernate";
   services.logind.settings.Login.HandleLidSwitchExternalPower = lib.mkForce "suspend-then-hibernate";
@@ -83,12 +83,12 @@
   # Hibernate on power button pressed.
   services.logind.settings.Login.HandlePowerKey = "hibernate";
   services.logind.settings.Login.HandlePowerKeyLongPress = "poweroff";
-  # Define time delay for hibernation
-  systemd.sleep.settings.Sleep = {
-    HibernateDelaySec = "30m";
-    SuspendState = "mem";
-  };
-
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "2min";
+  # NixOS keeps logind running across switches by default. Reload it when this
+  # policy changes so lid handling takes effect without a full reboot.
+  systemd.services.systemd-logind.reloadTriggers = [
+    config.environment.etc."systemd/logind.conf".source
+  ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

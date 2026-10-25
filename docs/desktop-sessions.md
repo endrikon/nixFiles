@@ -119,6 +119,8 @@ Hyprland uses Noctalia in place of Xmobar and Hyprsunset at 4000 K in place of
 Redshift. Dunst serves both sessions. Hypridle locks after 10 minutes and before
 sleep, respecting application idle inhibitors. The X11 slock services only run
 in X11 sessions; Hyprlock handles locking in Hyprland.
+Manual and idle locking share a nonblocking file lock to prevent simultaneous
+Hyprlock launches from leaving a stale process that blocks later lock requests.
 
 Hyprland's native layouts approximate XMonad's layout state rather than sharing
 it. Entering/leaving Full recreates the master layout, resetting its ratio and

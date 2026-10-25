@@ -22,7 +22,7 @@
     launcher = "${pkgs.wofi}/bin/wofi --show drun";
     run = "${pkgs.wofi}/bin/wofi --show run";
     browser = "${pkgs.firefox}/bin/firefox";
-    lock = "${pkgs.procps}/bin/pgrep -x hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+    lock = ''${pkgs.util-linux}/bin/flock --nonblock --no-fork "$XDG_RUNTIME_DIR/hyprlock.lock" ${pkgs.hyprlock}/bin/hyprlock'';
     reload = "${pkgs.hyprland}/bin/hyprctl reload";
     volumeUp = "${pkgs.alsa-utils}/bin/amixer -q set Master 4%+ unmute";
     volumeDown = "${pkgs.alsa-utils}/bin/amixer -q set Master 4%- unmute";
